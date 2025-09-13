@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app-title">
+        <h1>Edit Profile</h1>
+    </div>
+
+    <div class="form-container">
+        <form method="POST" enctype="multipart/form-data" class="auth-form">
+            <input type="text" name="username" value="{{ user[0] }}" placeholder="Username" required>
+            <input type="password" name="password" placeholder="New Password">
+            <input type="text" name="bio" value="{{ user[2] or '' }}" placeholder="Short Bio">
+            <input type="text" name="contact" value="{{ user[3] or '' }}" placeholder="Contact Info">
+            <input type="file" name="profile_pic">
+            <button type="submit">Save</button>
+        </form>
+        <a href="/" class="logout">← Back to Tasks</a>
+    </div>
+</body>
+</html>

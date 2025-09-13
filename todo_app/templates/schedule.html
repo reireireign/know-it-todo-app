@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Class Schedule</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app-title"><h1>KNOW IT: TO DO APP</h1></div>
+
+    <div class="page-container">
+        <h2>📚 Class Schedule</h2>
+        <form method="POST" class="add-form" enctype="application/x-www-form-urlencoded">
+            <select name="day" required>
+                <option value="">Select Day</option>
+                <option>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+                <option>Saturday</option>
+                <option>Sunday</option>
+            </select>
+            <input type="text" name="subject" placeholder="Subject" required>
+            <input type="time" name="time" required>
+            <button type="submit">Add Class</button>
+        </form>
+
+   <hr style="border: none; height: 1px; background-color: #ffd6d6; margin: 20px 0;">
+
+<div class="schedule-grid">
+  {% for day, entries in schedule.items() %}
+    <div class="day-column">
+      <div class="day-header">
+        <span class="day-name">{{ day }}</span>
+      </div>
+      <ul class="day-entries">
+        {% for id, subject in entries %}
+          <li class="schedule-row">
+            <span class="schedule-text">{{ subject }}</span>
+            <div class="schedule-actions">
+              <a href="/edit_schedule/{{ id }}" class="edit-btn">✏️</a>
+              <a href="/delete_schedule/{{ id }}" class="delete-btn">🗑️</a>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+</div>
+        <a href="/" class="back-link">← Back to Dashboard</a>
+    </div>
+</body>
+</html>

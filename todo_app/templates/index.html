@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Know It: To-Do List</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app-title">
+        <h1>KNOW IT: TO DO APP</h1>
+    </div>
+
+    <!-- Menu Bar -->
+<div class="menu-bar">
+    <div class="profile-section">
+        {% if user_info['profile_pic'] %}
+            <img src="{{ url_for('static', filename='uploads/' + user_info['profile_pic']) }}" alt="Profile Picture" class="profile-pic">
+        {% else %}
+            <p>No profile.</p>
+        {% endif %}
+
+        <div class="profile-info">
+            <h3>Welcome, {{ user_info['username'] }}</h3>
+            {% if user_info['bio'] %}
+                <p class="bio">{{ user_info['bio'] }}</p>
+            {% endif %}
+            {% if user_info['contact'] %}
+                <p class="contact">📞 {{ user_info['contact'] }}</p>
+            {% endif %}
+            <a href="/edit_profile" class="edit-link">Edit Profile</a>
+        </div>
+    </div>
+
+    <div class="nav-buttons">
+        <a href="/" class="nav-btn active">Tasks</a>
+        <a href="/schedule" class="nav-btn">Class Schedule</a>
+        <a href="/calendar" class="nav-btn">Calendar</a>
+    </div>
+</div>
+
+
+    <!-- Task Box Below -->
+    <div class="task-box">
+        <h2>🌸 Your Tasks</h2>
+
+        <div class="task-stats-box">
+            <div class="task-stats">
+                <div class="stat-item">🌸 Total Tasks: {{ tasks|length }}</div>
+                <div class="stat-item">✅ Completed: {{ tasks|selectattr("4", "equalto", "done")|list|length }}</div>
+                <div class="stat-item">🕒 Pending: {{ tasks|selectattr("4", "equalto", "pending")|list|length }}</div>
+                <div class="stat-item">⚠️ Overdue: {{ overdue_count }}</div>
+        </div>
+
+        <div class="add-task-form">
+            <form action="/add_task" method="POST" enctype="multipart/form-data">
+                <input type="text" name="task" placeholder="Enter task" required>
+                <input type="datetime-local" name="deadline" required>
+                <input type="file" name="attachment">
+                <button type="submit">➕ Add Task</button>
+            </form>
+        </div>
+
+        <ul class="task-list">
+            {% for task in tasks %}
+            <li>
+                <div class="task-row">
+                    <span class="task-text">{{ task[1] }}</span>
+                    <span class="task-deadline">{{ task[2] }}</span>
+                    <span class="task-status {% if task[4] == 'done' %}done{% elif task[2] and task[2] < now %}overdue{% endif %}">
+                        {{ task[4] }}
+                    </span>
+                    {% if task[3] %}
+                        <a href="/static/uploads/{{ task[3] }}" target="_blank" class="file-link">📎 View File</a>
+                    {% endif %}
+                    <a href="/edit/{{ task[0] }}" class="edit-btn">✏️ Edit</a>
+                    <a href="/toggle_status/{{ task[0] }}" class="status-btn">✔️</a>
+                    <a href="/delete/{{ task[0] }}" class="delete-btn">🗑️</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <a href="/logout" class="logout">Logout</a>
+    </div>
+</body>
+</html>

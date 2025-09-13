@@ -1,0 +1,709 @@
+/* === Base === */
+body {
+  background: linear-gradient(to bottom right, #fef6e4, #fff1f1);
+  font-family: 'Elephant', 'Georgia', serif;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'Elephant';
+  src: url('/static/fonts/ELEPHNT.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1, h2, .app-title {
+  font-family: 'Elephant', serif;
+}
+
+.app-title {
+  background-color: #ffb3c6;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* === Layout Containers === */
+.page-container,
+.task-box,
+.auth-box {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #ffd6d6;
+  padding: 20px;
+  margin: 20px auto;
+}
+
+.page-container h2 {
+  color: #ff8fab;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.page-description {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* === Links === */
+.back-link,
+.logout,
+.edit-link,
+.switch-link a,
+.file-link {
+  color: #ff4d6d;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+.logout {
+  display: inline-block;
+  margin-top: 20px;
+  color: #ff4d6d;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* === Menu Bar === */
+.menu-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff1f1;
+  padding: 15px 30px;
+  border-bottom: 2px solid #ffd6d6;
+  box-shadow: 0 2px 5px #f3c5c5;
+  flex-wrap: wrap;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.profile-pic {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffd6d6;
+}
+
+.profile-info h3 {
+  margin: 0;
+  color: #ff8fab;
+  font-size: 18px;
+}
+
+.profile-info .bio,
+.profile-info .contact {
+  margin: 2px 0;
+  font-size: 13px;
+  color: #555;
+}
+
+/* === Navigation Buttons === */
+.nav-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  background-color: #ffb3c6;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-btn:hover,
+.edit-btn:hover,
+.delete-btn:hover,
+.status-btn:hover,
+.add-form button:hover,
+.day-actions .edit-btn:hover,
+.day-actions .delete-btn:hover {
+  background-color: #ff8fab;
+}
+
+.nav-btn.active {
+  background-color: #ff8fab;
+  box-shadow: 0 0 5px #ff8fab;
+}
+
+/* === Forms === */
+.add-form,
+.schedule-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 20px 0;
+}
+
+.add-form input,
+.add-form select,
+.schedule-form input,
+.schedule-form select,
+.schedule-form button {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ffd6d6;
+  font-size: 14px;
+  flex: 1;
+  min-width: 150px;
+}
+
+.add-form input[type="text"],
+.add-form input[type="datetime-local"],
+.add-form input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.add-form button {
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.file-link {
+  color: #ff69b4;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 100px);
+  background: linear-gradient(to bottom right, #fef6e4, #fff1f1);
+  padding: 20px;
+}
+
+.auth-box {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  border: 2px solid #ffd6d6;
+  box-shadow: 0 0 10px #f3c5c5;
+  width: 320px;
+  max-width: 90%;
+  text-align: center;
+}
+
+.auth-box h2 {
+  color: #ff8fab;
+  font-size: 22px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-form input {
+  padding: 10px;
+  border: 1px solid #ffd6d6;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.auth-form button {
+  background-color: #ffb3c6;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.auth-form button:hover {
+  background-color: #ff8fab;
+}
+
+.switch-link {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #555;
+}
+
+.switch-link a {
+  color: #ff4d6d;
+  text-decoration: underline;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+/* === Task Row === */
+.task-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffe4ec;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ffc0cb;
+}
+
+.task-text {
+  flex: 2;
+  font-weight: bold;
+  color: #333;
+}
+
+.task-deadline {
+  flex: 1;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.task-status {
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.8em;
+  background-color: #fff0f0;
+  color: #ff4d6d;
+}
+
+.task-status.done {
+  background-color: #d4fdd4;
+  color: #4BB543;
+}
+
+.task-status.overdue {
+  background-color: #ffe0e0;
+  color: #c53030;
+}
+
+.edit-btn, .delete-btn, .status-btn, .file-link {
+  margin-left: 10px;
+  text-decoration: none;
+  font-size: 1.2em;
+  color: #555;
+}
+
+.edit-btn:hover, .delete-btn:hover, .status-btn:hover {
+  color: #ff69b4;
+}
+
+/* === Buttons === */
+.edit-btn,
+.delete-btn,
+.status-btn,
+.day-actions .edit-btn,
+.day-actions .delete-btn {
+  text-decoration: none;
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background-color: #ffb3c6;
+  color: white;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* === Class Schedule === */
+.schedule-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.day-column {
+  background-color: #fff1f1;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ffd6d6;
+  width: 180px;
+  box-sizing: border-box;
+}
+
+.day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.day-name {
+  font-weight: bold;
+  color: #ff4d6d;
+  font-size: 16px;
+}
+
+.day-entries {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.schedule-row {
+  background-color: #ffffff;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #ffd6d6;
+  font-size: 13px;
+  color: #333;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.schedule-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.schedule-subject {
+  font-weight: bold;
+  color: #ff4d6d;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.schedule-time {
+  font-size: 13px;
+  color: #555;
+}
+
+.schedule-actions {
+  display: flex;
+  gap: 6px;
+}
+
+/* === Calendar === */
+.calendar-grid,
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.calendar-header h2 {
+  font-size: 24px;
+  color: #ff4d6d;
+  margin: 0;
+}
+
+.calendar-nav {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.calendar-nav select,
+.calendar-nav button {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ffd6d6;
+  background-color: #fff1f1;
+  font-size: 14px;
+  color: #333;
+}
+
+
+.calendar-day {
+  background-color: #fff1f1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ffd6d6;
+  height: auto;
+  min-height: 120px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
+  max-height: 200px;
+}
+
+.day-number {
+  font-weight: bold;
+  color: #ff4d6d;
+  font-size: 16px;
+  background-color: #ffffff;
+  padding: 4px 6px;
+  border-radius: 6px;
+  align-self: flex-start;
+}
+
+.calendar-task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 6px 8px;
+  margin-top: 4px;
+  border-radius: 6px;
+  border: 1px solid #ffd6d6;
+  font-size: 13px;
+  color: #333;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.task-text {
+  flex: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.task-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.edit-btn,
+.delete-btn {
+  background-color: #ffb3c6;
+  color: white;
+  border: none;
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .calendar-grid,
+  .calendar-days {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .calendar-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .calendar-task {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .task-actions {
+    margin-top: 6px;
+  }
+
+  .add-event-btn {
+    position: static;
+    margin-top: 8px;
+    align-self: flex-end;
+  }
+}
+
+
+.add-event-btn {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: #ffb3c6;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+}
+
+.calendar-day.empty {
+  background-color: transparent;
+  border: none;
+}
+
+/* === Modal === */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #ffd6d6;
+  box-shadow: 0 0 10px #f3c5c5;
+  width: 300px; 
+}
+/* === Auth Container === */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 100px);
+  background: linear-gradient(to bottom right, #fef6e4, #fff1f1);
+  padding: 20px;
+}
+
+/* === Modal Close Button (Optional) === */
+.close-btn {
+  background-color: #ffb3c6;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  float: right;
+}
+
+/* === Responsive Fixes === */
+@media (max-width: 768px) {
+  .menu-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-buttons {
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .add-form,
+  .schedule-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .add-form input,
+  .add-form button,
+  .schedule-form input,
+  .schedule-form button {
+    width: 100%;
+  }
+
+  .schedule-grid,
+  .calendar-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .auth-box {
+    width: 90%;
+  }
+}
+
+.task-stats-box {
+  width: 100%;
+  background-color: #fff1f1;
+  border: 2px solid #ffd6d6;
+  border-radius: 12px;
+  padding: 20px 40px;
+  margin: 20px 0;
+  box-shadow: 0 0 10px #f3c5c5;
+  box-sizing: border-box;
+}
+
+.task-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  text-align: center;
+}
+
+.stat-item {
+  font-size: 14px;
+  font-weight: bold;
+  color: #ff4d6d;
+  background-color: #ffffff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #ffd6d6;
+  box-shadow: 0 0 5px #ffd6d6;
+  min-width: 140px;
+}
+@media (max-width: 768px) {
+  .task-stats {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .stat-item {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+
+.admin-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 8px 12px;
+  background-color: #ffb3c6;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.admin-link:hover {
+  background-color: #ff8fab;
+}
+
+.add-task-form {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.task-list {
+  margin-top: 20px;
+}

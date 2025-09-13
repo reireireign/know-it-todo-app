@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Event</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app-title"><h1>KNOW IT: TO DO APP</h1></div>
+
+    <div class="auth-container">
+        <div class="auth-box">
+            <h2>🗓️ Edit Event</h2>
+            <form method="POST" class="auth-form">
+                <input type="text" name="event" value="{{ event_text }}" placeholder="Event Title" required>
+                <button type="submit">💾 Save Changes</button>
+                <a href="/calendar" class="back-link">← Cancel</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

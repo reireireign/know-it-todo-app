@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Class</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app-title"><h1>KNOW IT: TO DO APP</h1></div>
+
+    <div class="auth-container">
+        <div class="auth-box">
+            <h2>✏️ Edit Class</h2>
+            <form method="POST" class="auth-form">
+                <select name="day" required>
+                    <option>Monday</option>
+                    <option>Tuesday</option>
+                    <option>Wednesday</option>
+                    <option>Thursday</option>
+                    <option>Friday</option>
+                    <option>Saturday</option>
+                    <option>Sunday</option>
+                </select>
+                <input type="text" name="subject" placeholder="Subject" required>
+                <input type="time" name="time" required>
+                <button type="submit">Update</button>
+            </form>
+            <a href="/schedule" class="back-link">← Back to Schedule</a>
+        </div>
+    </div>
+</body>
+</html>
